@@ -44,9 +44,8 @@ private extension PageViewController {
     func setupLayout() {
         
         NSLayoutConstraint.activate([
-            pageControl.widthAnchor.constraint(equalTo: view.widthAnchor),
-            pageControl.heightAnchor.constraint(equalToConstant: 20),
-            view.bottomAnchor.constraint(equalToSystemSpacingBelow: pageControl.bottomAnchor, multiplier: 1),
+            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            pageControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             
         ])
         
@@ -60,10 +59,7 @@ private extension PageViewController {
     
     func setupAppearance() {
         pageControl.translatesAutoresizingMaskIntoConstraints = false
-        pageControl.numberOfPages = pages.count
         pageControl.currentPage = initialPage
-        pageControl.currentPageIndicatorTintColor = .green
-        pageControl.pageIndicatorTintColor = .blue
     }
     
 }
@@ -80,6 +76,7 @@ private extension PageViewController {
         
         [rocketPage,launchesPage, settingsPage].forEach({pages.append($0)})
         
+        pageControl.numberOfPages = pages.count
         setViewControllers([pages[initialPage]], direction: .forward, animated: true)
     }
     
@@ -111,6 +108,7 @@ extension PageViewController: UIPageViewControllerDelegate {
         
         pageControl.currentPage = currentIndex
     }
+    
 }
 
 extension PageViewController: UIPageViewControllerDataSource {
@@ -140,3 +138,4 @@ extension PageViewController: UIPageViewControllerDataSource {
     
     
 }
+
