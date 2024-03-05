@@ -8,9 +8,15 @@
 import Foundation
 import Alamofire
 
-class ApiManager {
-    
-    static let shared = ApiManager()
+protocol RocketManager {
+    func fetchingRocketApiData(completion: @escaping (_ apiData: Rockets) -> (Void))
+}
+
+protocol LaunchManager {
+    func fetchingLaunchesApiData(completion: @escaping (_ apiData: Launches) -> (Void))
+}
+
+class NetworkManagerImpl: RocketManager, LaunchManager {
     
     func fetchingRocketApiData(completion: @escaping (_ apiData: Rockets) -> (Void)) {
         let url = "https://api.spacexdata.com/v4/rockets"
