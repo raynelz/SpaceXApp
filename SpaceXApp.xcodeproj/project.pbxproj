@@ -82,19 +82,11 @@
 			children = (
 				ECBCC1FF2B9909FC00354CDA /* Core */,
 				ECA984022B91ED74003778CB /* Api */,
-				ECA983FF2B91ECA9003778CB /* Model */,
 				ECA984002B91ECB2003778CB /* View */,
 				ECA984012B91ECB8003778CB /* Controller */,
 				EC0BD8C92B9271A800AC9F1C /* Resources */,
 			);
 			path = SpaceXApp;
-			sourceTree = "<group>";
-		};
-		ECA983FF2B91ECA9003778CB /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		ECA984002B91ECB2003778CB /* View */ = {
