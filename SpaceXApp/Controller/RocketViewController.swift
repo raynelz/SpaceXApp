@@ -12,16 +12,12 @@ final class RocketViewController: UIViewController {
     let imageView = UIImageView()
     let infoView = InfoView()
     
-    var apiRocketsResult = [RocketElement]()
-    var apiLaunchesResult = [LaunchStruct]()
-    
     var rocketManager: RocketManager
-    var launchManager: LaunchManager
+    var RocketsManagerResult = [RocketElement]()
     
-    init(rocketManager: RocketManager = NetworkManagerImpl(),
-         launchManager: LaunchManager = NetworkManagerImpl()) {
+    
+    init(rocketManager: RocketManager = NetworkManagerImpl()) {
         self.rocketManager = rocketManager
-        self.launchManager = launchManager
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -95,13 +91,8 @@ private extension RocketViewController {
         
         rocketManager.fetchingRocketApiData { [weak self] apiData in
             guard let self else { return }
-            self.apiRocketsResult = apiData
-            self.infoView.setupText(apiRocketsResult[0].name)
-        }
-        
-        launchManager.fetchingLaunchesApiData { [weak self] apiData in
-            guard let self else { return }
-            self.apiLaunchesResult = apiData
+            self.RocketsManagerResult = apiData
+            self.infoView.setupText(RocketsManagerResult[0].name)
         }
         
     }
